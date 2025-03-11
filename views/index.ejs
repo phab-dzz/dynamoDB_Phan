@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách các Môn học</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: lightgreen;
+        }
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+            background-color: gray;
+            padding: 10px;
+        }
+        .form_input {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid black;
+            width: 50%;
+            margin-left: 25%;
+            gap: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            
+        }
+        .form_input input {
+            width: 80%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .form_input button{
+
+            width: 30%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="title">Danh sách các Môn học</div>
+
+    <form action="/delete" method="POST">
+        <table>
+            <thead>
+                <tr>
+                    <th>Chọn</th>
+                    <th>STT</th>
+                    <th>Tên môn học</th>
+                    <th>Loại môn học</th>
+                    <th>Học kỳ</th>
+                    <th>Khoa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% subjects.forEach(subject => { %>
+                    <tr>
+                        <td><input type="checkbox" name="selectedSubjects" value="<%= subject.id %>"></td>
+                        <td><%= subject.id %></td>
+                        <td><%= subject.name %></td>
+                        <td><%= subject.type %></td>
+                        <td><%= subject.semester %></td>
+                        <td><%= subject.department %></td>
+                        <!-- <td><img src="<%=subject.image_url%>" alt=""></td> -->
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <br>
+        <button type="submit">Xóa môn học đã chọn</button>
+    </form>
+    
+   <div class="form_input">
+    <h2 style="text-align: center;">Thêm môn học mới</h2>
+    <form action="/save" method="POST" action="/" enctype="multipart/form-data"  >
+        <input type="text" name="id" placeholder="STT">
+        <input type="text" name="name" placeholder="Tên môn học">
+        <input type="text" name="type" placeholder="Loại môn học">
+        <input type="text" name="semester" placeholder="Học kỳ">
+        <input type="text" name="department" placeholder="Khoa">
+        <!-- <input type="file" name="image" placeholder="Ảnh môn học"> -->
+        <br>
+       <div style="display: flex; justify-content: center;">
+        <button type="submit">submit</button>
+       </div>
+    </form>
+   </div>
+</body>
+</html>
