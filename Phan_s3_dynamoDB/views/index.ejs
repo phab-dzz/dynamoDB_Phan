@@ -67,6 +67,7 @@
                     <th>Loại môn học</th>
                     <th>Học kỳ</th>
                     <th>Khoa</th>
+                    <th>Ảnh</th>
                 </tr>
             </thead>
             <tbody>
@@ -78,7 +79,7 @@
                         <td><%= subject.type %></td>
                         <td><%= subject.semester %></td>
                         <td><%= subject.department %></td>
-                        <!-- <td><img src="<%=subject.image_url%>" alt=""></td> -->
+                        <td><img width="100px" height="100px" src="<%=subject.image%>" alt=""></td>
                     </tr>
                 <% }); %>
             </tbody>
@@ -95,7 +96,7 @@
         <input type="text" name="type" placeholder="Loại môn học">
         <input type="text" name="semester" placeholder="Học kỳ">
         <input type="text" name="department" placeholder="Khoa">
-        <!-- <input type="file" name="image" placeholder="Ảnh môn học"> -->
+        <input type="file" name="image" placeholder="Ảnh môn học">
         <br>
        <div style="display: flex; justify-content: center;">
         <button type="submit">submit</button>
